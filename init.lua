@@ -1,25 +1,5 @@
-vim.g.mapleader = " "
-
-vim.opt.expandtab = true
-vim.opt.shiftwidth = 4
-vim.opt.tabstop = 4
-vim.opt.hidden = true
-vim.opt.termguicolors = true
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.opt.joinspaces = true
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.scrolloff = 4
-vim.opt.sidescrolloff = 4
-vim.opt.shiftround = true
-vim.opt.smartindent = true
-vim.opt.splitbelow = true
-vim.opt.splitright = true
-vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
-
-vim.cmd [[packadd packer.nvim]]
+vim.cmd "source settings.vim"
+vim.cmd "packadd packer.nvim"
 
 return require("packer").startup(function(use)
   use {
@@ -41,7 +21,18 @@ return require("packer").startup(function(use)
     branch = "chad",
     run = "python -m chadtree deps",
   }
+  use { "tpope/vim-surround" }
+  use { "tpope/vim-repeat" }
+  use { "tpope/vim-commentary" }
+  use { "godlygeek/tabular" }
+  use { "chrisbra/NrrwRgn" }
+  use { "zirrostig/vim-schlepp" }
   use { "lifepillar/vim-solarized8" }
+  use { "vim-airline/vim-airline" }
+  use {
+    "vim-airline/vim-airline-themes",
+    requires = { "vim-airline/vim-airline" },
+  }
   vim.cmd [[colorscheme solarized8]]
 end)
 
