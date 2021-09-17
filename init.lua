@@ -1,5 +1,5 @@
-vim.cmd "source settings.vim"
-vim.cmd "packadd packer.nvim"
+vim.cmd("source " .. vim.fn.stdpath("config") .. "/settings.vim")
+vim.cmd("packadd packer.nvim")
 
 return require("packer").startup(function(use)
   use {
