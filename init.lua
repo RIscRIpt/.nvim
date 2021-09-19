@@ -26,10 +26,6 @@ require("packer").startup(function(use)
         branch = "chad",
         run = ":CHADdeps",
     }
-    use {
-        "nvim-treesitter/nvim-treesitter",
-        run = ":TSUpdate",
-    }
     use { "tpope/vim-surround" }
     use { "tpope/vim-repeat" }
     use { "tpope/vim-commentary" }
