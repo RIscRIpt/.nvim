@@ -1,6 +1,8 @@
 vim.cmd("source " .. vim.fn.stdpath("config") .. "/settings.vim")
 vim.cmd("packadd packer.nvim")
 
+require("coq_settings")
+
 require("packer").startup(function(use)
     use { "neovim/nvim-lspconfig" }
     use {
