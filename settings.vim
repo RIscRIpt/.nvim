@@ -44,7 +44,7 @@ set list
 set listchars=tab:\¦\ ,trail:·,nbsp:░,extends:»,precedes:«
 set lazyredraw
 set mouse=a
-set shortmess=aIc
+set shortmess=aIcOt
 set splitbelow
 set splitright
 set wildmenu
