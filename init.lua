@@ -96,13 +96,13 @@ require("packer").startup(function(use)
     use { "godlygeek/tabular" }
     use { "chrisbra/NrrwRgn" }
     use { "zirrostig/vim-schlepp" }
-    use { "lifepillar/vim-solarized8" }
+    use { "bluz71/vim-moonfly-colors" }
     use { "vim-airline/vim-airline" }
     use {
         "vim-airline/vim-airline-themes",
         requires = { "vim-airline/vim-airline" },
     }
-    vim.cmd [[colorscheme solarized8]]
+    vim.cmd [[colorscheme moonfly]]
 end)
 
 require("lsp")
