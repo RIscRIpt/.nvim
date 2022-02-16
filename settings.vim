@@ -134,9 +134,10 @@ vmap <Down>   <Plug>SchleppDown
 vmap <Left>   <Plug>SchleppLeft
 vmap <Right>  <Plug>SchleppRight
 vmap D        <Plug>SchleppDup
-let g:Schlepp#allowSquishingLines = 0
-let g:Schlepp#allowSquishingBlocks = 0
-let g:Schlepp#reindent = 1
+let g:Schlepp#allowSquishingLines = 1
+let g:Schlepp#allowSquishingBlocks = 1
+let g:Schlepp#trimWS = 0
+let g:Schlepp#reindent = 0
 
 nnoremap <leader>t :Tabularize /
 vnoremap <leader>t :Tabularize /
