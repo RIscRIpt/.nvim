@@ -53,6 +53,9 @@ set wildmode=longest:full,full
 let &showbreak="↳"
 call matchadd("ColorColumn", "\%80v")
 
+let g:loaded_netrw       = 1
+let g:loaded_netrwPlugin = 1
+
 inoremap <S-Enter> <C-o>O
 nnoremap <S-Enter> O<Esc>j
 nnoremap <CR> o<Esc>k
