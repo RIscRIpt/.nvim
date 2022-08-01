@@ -63,7 +63,7 @@ vnoremap <C-c> <C-Insert>
 noremap <C-s> :up<CR>
 inoremap <C-s> <C-o>:up<CR>
 
-noremap <A-n> :CHADopen<CR>
+noremap <silent> <A-n> :Telescope file_browser<CR>
 
 noremap <silent> <A-=> <C-w>=
 noremap <silent> <A-j> <C-w>-
