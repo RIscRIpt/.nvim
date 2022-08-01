@@ -1,3 +1,6 @@
 [submodule "pack/mgr/opt/packer.nvim"]
 	path = pack/mgr/opt/packer.nvim
 	url = https://github.com/wbthomason/packer.nvim
+[submodule "pack/work/start/whiteCryption.nvim"]
+	path = pack/work/start/whiteCryption.nvim
+	url = git@github.com:RIscRIpt/whiteCryption.nvim.git
