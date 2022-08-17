@@ -149,3 +149,4 @@ let g:Schlepp#reindent = 0
 nnoremap <leader>t :Tabularize /
 vnoremap <leader>t :Tabularize /
 
+command! -nargs=1 Browse silent execute "!start" '""' shellescape("<args>", 1)
