@@ -150,3 +150,8 @@ nnoremap <leader>t :Tabularize /
 vnoremap <leader>t :Tabularize /
 
 command! -nargs=1 Browse silent execute "!start" '""' shellescape("<args>", 1)
+
+nnoremap <silent> <leader>gb :GBrowse<CR>
+vnoremap <silent> <leader>gb :GBrowse<CR>
+nnoremap <silent> <leader>gl :GBrowse!<CR>
+vnoremap <silent> <leader>gl :GBrowse!<CR>
