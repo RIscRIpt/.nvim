@@ -107,6 +107,7 @@ require("packer").startup(function(use)
     use { "tpope/vim-surround" }
     use { "tpope/vim-repeat" }
     use { "tpope/vim-commentary" }
+    use { "editorconfig/editorconfig-vim" }
     use { "godlygeek/tabular" }
     use { "chrisbra/NrrwRgn" }
     use { "zirrostig/vim-schlepp" }

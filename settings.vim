@@ -155,3 +155,5 @@ nnoremap <silent> <leader>gb :GBrowse<CR>
 vnoremap <silent> <leader>gb :GBrowse<CR>
 nnoremap <silent> <leader>gl :GBrowse!<CR>
 vnoremap <silent> <leader>gl :GBrowse!<CR>
+
+let g:EditorConfig_exclude_patterns = ["fugitive://.*"]
