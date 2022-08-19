@@ -71,7 +71,9 @@ nnoremap <A-r> :e<CR>G
 noremap <A-s> <cmd>Telescope live_grep<CR>
 noremap <A-g> :let @/="\\<".expand("<cword>")."\\>"<CR><cmd>Telescope grep_string<CR>
 noremap <A-n> <cmd>Telescope file_browser path=%:p:h<CR>
+noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
+noremap <A-m> <cmd>Telescope oldfiles<CR>
 noremap <A-t> <cmd>Telescope<CR>
 
 noremap <silent> <A-=> <C-w>=
