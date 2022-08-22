@@ -71,13 +71,15 @@ nnoremap <C-w> :bd<CR>
 nnoremap <A-r> :e<CR>G
 
 noremap <A-s> <cmd>Telescope live_grep<CR>
+noremap <A-d> <cmd>Telescope jumplist<CR>
+noremap <A-f> <cmd>Telescope oldfiles<CR>
 noremap <A-g> :let @/="\\<".expand("<cword>")."\\>"<CR><cmd>Telescope grep_string<CR>
 noremap <A-n> <cmd>Telescope file_browser path=%:p:h<CR>
 noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
-noremap <A-m> <cmd>Telescope oldfiles<CR>
-noremap <A-g> <cmd>Telescope git_status<CR>
 noremap <A-t> <cmd>Telescope<CR>
+noremap <A-r> <cmd>Telescope resume<CR>
+noremap <leader>gs <cmd>Telescope git_status<CR>
 
 noremap <silent> <A-=> <C-w>=
 noremap <silent> <A-j> <C-w>-
@@ -173,7 +175,7 @@ vnoremap <leader>t :Tabularize /
 
 command! -nargs=1 Browse silent execute "!start" '""' shellescape("<args>", 1)
 
-nnoremap <silent> <leader>gs :Gvdiffsplit<CR>
+nnoremap <silent> <leader>gd :Gvdiffsplit<CR>
 nnoremap <silent> <leader>gb :GBrowse<CR>
 vnoremap <silent> <leader>gb :GBrowse<CR>
 nnoremap <silent> <leader>gl :GBrowse!<CR>
