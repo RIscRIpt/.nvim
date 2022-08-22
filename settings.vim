@@ -74,6 +74,7 @@ noremap <A-n> <cmd>Telescope file_browser path=%:p:h<CR>
 noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
 noremap <A-m> <cmd>Telescope oldfiles<CR>
+noremap <A-g> <cmd>Telescope git_status<CR>
 noremap <A-t> <cmd>Telescope<CR>
 
 noremap <silent> <A-=> <C-w>=
