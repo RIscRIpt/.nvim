@@ -118,7 +118,7 @@ noremap <leader>8 <Plug>AirlineSelectTab8
 noremap <leader>9 <Plug>AirlineSelectTab9
 noremap <leader>0 <Plug>AirlineSelectTab0
 noremap <leader>- <Plug>AirlineSelectPrevTab
-noremap <leader>+ <Plug>AirlineSelectNextTab
+noremap <leader>= <Plug>AirlineSelectNextTab
 
 function! StripTrailingWhitespaces()
   let l = line(".")
