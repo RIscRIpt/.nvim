@@ -66,6 +66,8 @@ vnoremap <C-c> <C-Insert>
 noremap <C-s> :up<CR>
 inoremap <C-s> <C-o>:up<CR>
 
+nnoremap <C-w> :q<CR>
+
 nnoremap <A-r> :e<CR>G
 
 noremap <A-s> <cmd>Telescope live_grep<CR>
