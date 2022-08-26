@@ -179,6 +179,7 @@ vnoremap <leader>t :Tabularize /
 command! -nargs=1 Browse silent execute "!start" '""' shellescape("<args>", 1)
 
 nnoremap <silent> <leader>gd :Gvdiffsplit<CR>
+nnoremap <silent> <leader>gm :G mergetool<CR>
 nnoremap <silent> <leader>gb :GBrowse<CR>
 vnoremap <silent> <leader>gb :GBrowse<CR>
 nnoremap <silent> <leader>gl :GBrowse!<CR>
