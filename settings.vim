@@ -70,6 +70,9 @@ nnoremap <C-w> :bd<CR>
 
 nnoremap <A-r> :e<CR>G
 
+nnoremap <kPlus> :cn<CR>
+nnoremap <kMinus> :cp<CR>
+
 noremap <A-s> <cmd>Telescope live_grep<CR>
 noremap <A-d> <cmd>Telescope jumplist<CR>
 noremap <A-f> <cmd>Telescope oldfiles<CR>
