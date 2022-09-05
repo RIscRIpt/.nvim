@@ -49,6 +49,7 @@ set splitbelow
 set splitright
 set wildmenu
 set wildmode=longest:full,full
+set grepprg=rg
 
 let &showbreak="↳"
 call matchadd("ColorColumn", "\%80v")
