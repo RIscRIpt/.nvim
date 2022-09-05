@@ -74,6 +74,8 @@ nnoremap <A-r> :e<CR>G
 nnoremap + :cn<CR>
 nnoremap - :cp<CR>
 
+nnoremap <F7> :make<CR>
+
 noremap <A-s> <cmd>Telescope live_grep<CR>
 noremap <A-d> <cmd>Telescope jumplist<CR>
 noremap <A-f> <cmd>Telescope oldfiles<CR>
