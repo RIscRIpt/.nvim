@@ -104,6 +104,7 @@ require("packer").startup(function(use)
         "shumphrey/fugitive-gitlab.vim",
         requires = { "tpope/vim-fugitive" },
     }
+    use { "mbbill/undotree" }
     use { "tpope/vim-surround" }
     use { "tpope/vim-repeat" }
     use { "tpope/vim-commentary" }
