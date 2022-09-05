@@ -111,6 +111,12 @@ require("packer").startup(function(use)
     use { "PeterRincker/vim-argumentative" }
     use { "editorconfig/editorconfig-vim" }
     use { "godlygeek/tabular" }
+    use {
+        "klen/nvim-config-local",
+        config = function()
+            require("config-local").setup()
+        end
+    }
     use { "chrisbra/NrrwRgn" }
     use { "zirrostig/vim-schlepp" }
     use { "bluz71/vim-moonfly-colors" }
