@@ -67,8 +67,6 @@ vnoremap <C-c> <C-Insert>
 noremap <C-s> :up<CR>
 inoremap <C-s> <C-o>:up<CR>
 
-nnoremap <C-w> :bd<CR>
-
 nnoremap <A-r> :e<CR>G
 
 nnoremap + :cn<CR>
