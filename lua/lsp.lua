@@ -1,5 +1,5 @@
 local lsp = require("lspconfig")
-local coq = require("coq")
+local cmp = require("cmp_nvim_lsp")
 
 function format_range()
     if _G.format_op ~= nil then
@@ -14,7 +14,10 @@ function format_range()
             start = { start[1], 0 }
             finish = { finish[1], -1 }
         end
-        vim.lsp.buf.range_formatting({}, start, finish)
+        vim.lsp.buf.format({
+            range = { start = start, ["end"] = finish },
+            timeout_ms = 10000
+        })
         vim.go.operatorfunc = old_op_fn
         _G.format_op = nil
     end
@@ -32,7 +35,8 @@ function common_on_attach(client, buffer)
     vim.keymap.set("", "=", format_range, map_opts)
 end
 
-lsp.ccls.setup(coq.lsp_ensure_capabilities({
+lsp.ccls.setup({
+    capabilities = cmp.default_capabilities(),
     init_options = {
         compilationDatabaseDirectory = "build",
         completion = {
@@ -43,7 +47,7 @@ lsp.ccls.setup(coq.lsp_ensure_capabilities({
         },
     },
     on_attach = common_on_attach,
-}))
+})
 
 lsp.pyright.setup({
     on_attach = common_on_attach,

@@ -1,23 +1,50 @@
 vim.cmd("source " .. vim.fn.stdpath("config") .. "/settings.vim")
 vim.cmd("packadd packer.nvim")
 
-require("coq_settings")
-
 require("packer").startup(function(use)
     use { "neovim/nvim-lspconfig" }
     use {
-        "ms-jpq/coq_nvim",
-        branch = "coq",
+        "nvim-treesitter/nvim-treesitter",
+        run = function()
+            require("nvim-treesitter.install").update({ with_sync = true })
+        end,
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = { "c", "cpp", "lua", "python" },
+                highlight = {
+                    enable = true,
+                    additional_vim_regex_highlighting = false,
+                },
+                incremental_selection = { enable = true },
+                textobjects = { enable = true },
+            })
+        end
     }
     use {
-        "ms-jpq/coq.artifacts",
-        branch = "artifacts",
-        requires = { { "ms-jpq/coq_nvim" } },
-    }
-    use {
-        "ms-jpq/coq.thirdparty",
-        branch = "3p",
-        requires = { { "ms-jpq/coq_nvim" } },
+        "hrsh7th/nvim-cmp",
+        requires = {
+            { "hrsh7th/cmp-nvim-lsp" },
+            { "hrsh7th/cmp-path" },
+            { "hrsh7th/cmp-buffer" },
+            { "f3fora/cmp-spell" },
+            { "petertriho/cmp-git", requires = "nvim-lua/plenary.nvim" },
+        },
+        config = function()
+            local cmp = require("cmp")
+            cmp.setup({
+                sources = cmp.config.sources({
+                    { name = "nvim_lsp" },
+                    { name = "path" },
+                    { name = "spell" },
+                    { name = "git" },
+                    { name = "buffer" },
+                }),
+                mapping = cmp.mapping.preset.insert({
+                    ['<C-Space>'] = cmp.mapping.complete(),
+                    ['<CR>'] = cmp.mapping.confirm({ select = true }),
+                }),
+            })
+        end
     }
     use {
         "nvim-telescope/telescope.nvim",
