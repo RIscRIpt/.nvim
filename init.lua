@@ -10,9 +10,9 @@ require("packer").startup(function(use)
         end,
         config = function()
             require("nvim-treesitter.configs").setup({
-                ensure_installed = { "c", "cpp", "lua", "python" },
+                ensure_installed = { "c", "cpp", "python" },
                 highlight = {
-                    enable = true,
+                    enable = false,
                     additional_vim_regex_highlighting = false,
                 },
                 incremental_selection = { enable = true },

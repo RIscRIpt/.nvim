@@ -58,8 +58,6 @@ let g:loaded_netrw       = 1
 let g:loaded_netrwPlugin = 1
 
 inoremap <S-Enter> <C-o>O
-nnoremap <S-Enter> O<Esc>j
-nnoremap <CR> o<Esc>k
 
 inoremap <C-v> <S-Insert>
 vnoremap <C-c> <C-Insert>
@@ -67,22 +65,18 @@ vnoremap <C-c> <C-Insert>
 noremap <C-s> :up<CR>
 inoremap <C-s> <C-o>:up<CR>
 
-nnoremap <A-r> :e<CR>G
-
 nnoremap + :cn<CR>
 nnoremap - :cp<CR>
 
 nnoremap <F7> :make<CR>
 
 noremap <A-s> <cmd>Telescope live_grep<CR>
-noremap <A-d> <cmd>Telescope jumplist<CR>
 noremap <A-f> <cmd>Telescope oldfiles<CR>
 noremap <A-g> :let @/="\\<".expand("<cword>")."\\>"<CR><cmd>Telescope grep_string<CR>
 noremap <A-n> <cmd>Telescope file_browser path=%:p:h<CR>
 noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
-noremap <A-t> <cmd>Telescope<CR>
-noremap <A-r> <cmd>Telescope resume<CR>
+noremap <A-t> <cmd>Telescope resume<CR>
 noremap <leader>gs <cmd>Telescope git_status<CR>
 
 noremap <silent> <A-=> <C-w>=
