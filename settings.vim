@@ -47,6 +47,8 @@ set mouse=a
 set shortmess=aIcOt
 set splitbelow
 set splitright
+set spell
+set spelllang=en,ru,lv
 set wildmenu
 set wildmode=longest:full,full
 set grepprg=rg
