@@ -114,32 +114,8 @@ endfunction
 nnoremap <leader>sw :call StripTrailingWhitespaces()<CR>
 vnoremap <leader>sw :call StripTrailingWhitespaces()<CR>
 
-augroup EasyAlternate
-  autocmd!
-  autocmd BufLeave * call EasyAlternate("b")
-  autocmd TabLeave * call EasyAlternate("t")
-augroup END
-
-let s:ea_prev_view = ""
-function! EasyAlternate(...)
-  if a:0 == 0
-    if s:ea_prev_view == "t"
-      execute "tabn " . s:prev_tab
-    elseif s:ea_prev_view == "b"
-      execute "b " . s:prev_buf
-    endif
-  else
-    if a:1 == "t"
-      let s:prev_tab = tabpagenr()
-    elseif a:1 == "b" && len(tabpagebuflist()) == 1
-      let s:prev_buf = bufnr("%")
-    endif
-    let s:ea_prev_view = a:1
-  endif
-endfunction
-
-nnoremap <silent> <leader><leader> :call EasyAlternate()<CR>
-vnoremap <silent> <leader><leader> :call EasyAlternate()<CR>
+nnoremap <silent> <leader><leader> :b#<CR>
+vnoremap <silent> <leader><leader> :b#<CR>
 
 vmap <S-Up>   <Plug>SchleppIndentUp
 vmap <S-Down> <Plug>SchleppIndentDown
