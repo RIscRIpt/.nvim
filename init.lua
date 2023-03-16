@@ -151,12 +151,38 @@ require("packer").startup(function(use)
     use { "chrisbra/NrrwRgn" }
     use { "zirrostig/vim-schlepp" }
     use { "bluz71/vim-moonfly-colors" }
-    use { "vim-airline/vim-airline" }
+    use { "catppuccin/nvim", as = "catppuccin" }
     use {
-        "vim-airline/vim-airline-themes",
-        requires = { "vim-airline/vim-airline" },
+        'nvim-lualine/lualine.nvim',
+        requires = { 'kyazdani42/nvim-web-devicons', opt = true },
+        config = function()
+            local buffers = require("lualine.components.buffers")
+            function buffer_jump_fn(nr)
+                return function() buffers.buffer_jump(nr, "!") end
+            end
+            for i = 1,9 do
+                vim.keymap.set("", "<leader>" .. i, buffer_jump_fn(i))
+            end
+            vim.keymap.set("", "<leader>0", buffer_jump_fn(10))
+            require("lualine").setup({
+                options = {
+                    theme = "catppuccin"
+                },
+                tabline = {
+                    lualine_a = {{
+                        "buffers",
+                        mode = 2,
+                    }},
+                    lualine_b = {},
+                    lualine_c = {},
+                    lualine_x = {},
+                    lualine_y = {},
+                    lualine_z = {"tabs"},
+                },
+            })
+        end
     }
-    vim.cmd [[colorscheme moonfly]]
+    vim.cmd [[colorscheme catppuccin-latte]]
 end)
 
 require("lsp")

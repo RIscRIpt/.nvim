@@ -18,7 +18,7 @@ else
 endif
 
 syntax on
-set background=dark
+set background=light
 "set keymap=russian-jcukenwin
 set showcmd
 set number
@@ -104,23 +104,6 @@ nnoremap <Down>  <C-e>
 nnoremap <Left>  zh
 
 nnoremap <leader>. @:
-
-let g:airline_powerline_fonts = 1
-let g:airline#extensions#tabline#enabled = 1
-let g:airline#extensions#tabline#buffer_idx_mode = 1
-
-noremap <leader>1 <Plug>AirlineSelectTab1
-noremap <leader>2 <Plug>AirlineSelectTab2
-noremap <leader>3 <Plug>AirlineSelectTab3
-noremap <leader>4 <Plug>AirlineSelectTab4
-noremap <leader>5 <Plug>AirlineSelectTab5
-noremap <leader>6 <Plug>AirlineSelectTab6
-noremap <leader>7 <Plug>AirlineSelectTab7
-noremap <leader>8 <Plug>AirlineSelectTab8
-noremap <leader>9 <Plug>AirlineSelectTab9
-noremap <leader>0 <Plug>AirlineSelectTab0
-noremap <leader>- <Plug>AirlineSelectPrevTab
-noremap <leader>= <Plug>AirlineSelectNextTab
 
 function! StripTrailingWhitespaces()
   let l = line(".")
