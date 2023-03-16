@@ -18,7 +18,7 @@ else
 endif
 
 syntax on
-set background=light
+colorscheme catppuccin
 "set keymap=russian-jcukenwin
 set showcmd
 set number
