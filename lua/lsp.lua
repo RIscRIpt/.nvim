@@ -25,7 +25,7 @@ function format_range()
     vim.api.nvim_feedkeys("g@", "n", false)
 end
 
-function common_on_attach(client, buffer)
+function lsp_on_attach(client, buffer)
     local map_opts = {
         noremap = true,
         expr = true,
@@ -40,25 +40,30 @@ function common_on_attach(client, buffer)
     vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
 end
 
-lsp.ccls.setup({
-    capabilities = cmp.default_capabilities(),
-    init_options = {
-        compilationDatabaseDirectory = "build",
-        completion = {
-            filterAndSort = false,
+function lsp_setup_ccls()
+    lsp.ccls.setup({
+        capabilities = cmp.default_capabilities(),
+        init_options = {
+            compilationDatabaseDirectory = "build",
+            completion = {
+                filterAndSort = false,
+            },
+            index = {
+                multiVersion = 1,
+            },
         },
-        index = {
-            multiVersion = 1,
-        },
-    },
-    on_attach = common_on_attach,
-})
+        on_attach = lsp_on_attach,
+    })
+end
 
-lsp.pyright.setup({
-    on_attach = common_on_attach,
-})
+function lsp_setup_pyright()
+    lsp.pyright.setup({
+        on_attach = lsp_on_attach,
+    })
+end
 
-lsp.cmake.setup({
-    on_attach = common_on_attach,
-})
-
+function lsp_setup_cmake()
+    lsp.cmake.setup({
+        on_attach = lsp_on_attach,
+    })
+end
