@@ -40,11 +40,11 @@ function lsp_on_attach(client, buffer)
     vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
 end
 
-function lsp_setup_ccls()
+function lsp_setup_ccls(build_dir)
     lsp.ccls.setup({
         capabilities = cmp.default_capabilities(),
         init_options = {
-            compilationDatabaseDirectory = "build",
+            compilationDatabaseDirectory = build_dir or "build",
             completion = {
                 filterAndSort = false,
             },
