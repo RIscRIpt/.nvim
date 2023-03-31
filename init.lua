@@ -184,4 +184,5 @@ require("packer").startup(function(use)
     }
 end)
 
+require("settings")
 require("lsp")
