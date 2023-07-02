@@ -49,6 +49,7 @@ require("packer").startup(function(use)
             })
         end
     }
+    use { "ludovicchabant/vim-gutentags" }
     use {
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
@@ -67,28 +68,14 @@ require("packer").startup(function(use)
         "lewis6991/gitsigns.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
         config = function()
-            require("gitsigns").setup({
+            local gs = require("gitsigns")
+            gs.setup({
                 signs = {
                     add          = { hl = "GitSignsAdd",    text = nil, numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn" },
                     change       = { hl = "GitSignsChange", text = nil, numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
                     delete       = { hl = "GitSignsDelete", text = nil, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
                     topdelete    = { hl = "GitSignsDelete", text = nil, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
                     changedelete = { hl = "GitSignsChange", text = nil, numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-                },
-                keymaps = {
-                    noremap = true,
-                    ["n ]c"] = { expr = true, "&diff ? ']c' : '<cmd>lua require(\"gitsigns.actions\").next_hunk()<CR>'" },
-                    ["n [c"] = { expr = true, "&diff ? '[c' : '<cmd>lua require(\"gitsigns.actions\").prev_hunk()<CR>'" },
-                    ["n <leader>hs"] = "<cmd>lua require(\"gitsigns\").stage_hunk()<CR>",
-                    ["v <leader>hs"] = "<cmd>lua require(\"gitsigns\").stage_hunk({vim.fn.line(\".\"), vim.fn.line(\"v\")})<CR>",
-                    ["n <leader>hu"] = "<cmd>lua require(\"gitsigns\").undo_stage_hunk()<CR>",
-                    ["n <leader>hr"] = "<cmd>lua require(\"gitsigns\").reset_hunk()<CR>",
-                    ["v <leader>hr"] = "<cmd>lua require(\"gitsigns\").reset_hunk({vim.fn.line(\".\"), vim.fn.line(\"v\")})<CR>",
-                    ["n <leader>hR"] = "<cmd>lua require(\"gitsigns\").reset_buffer()<CR>",
-                    ["n <leader>hp"] = "<cmd>lua require(\"gitsigns\").preview_hunk()<CR>",
-                    ["n <leader>hb"] = "<cmd>lua require(\"gitsigns\").blame_line(true)<CR>",
-                    ["n <leader>hS"] = "<cmd>lua require(\"gitsigns\").stage_buffer()<CR>",
-                    ["n <leader>hU"] = "<cmd>lua require(\"gitsigns\").reset_buffer_index()<CR>",
                 },
                 watch_gitdir = {
                     interval = 1000,
@@ -113,7 +100,7 @@ require("packer").startup(function(use)
                     noautocmd = true,
                 },
                 update_debounce = 100,
-                current_line_blame = true,
+                current_line_blame = false,
                 current_line_blame_opts = {
                     virt_text = true,
                     virt_text_pos = "eol",
@@ -123,6 +110,32 @@ require("packer").startup(function(use)
                     relative_time = true,
                 },
             })
+
+            vim.keymap.set("n", "]c", function()
+                if vim.wo.diff then return "]c" end
+                vim.schedule(function() gs.next_hunk() end)
+                return "<Ignore>"
+            end, { expr = true })
+            vim.keymap.set("n", "[c", function()
+                if vim.wo.diff then return "[c" end
+                vim.schedule(function() gs.prev_hunk() end)
+                return "<Ignore>"
+            end, { expr = true })
+
+            vim.keymap.set("n", "<leader>hs", gs.stage_hunk)
+            vim.keymap.set("v", "<leader>hs", function() gs.stage_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
+            vim.keymap.set("n", "<leader>hr", gs.reset_hunk)
+            vim.keymap.set("v", "<leader>hr", function() gs.reset_hunk({vim.fn.line("."), vim.fn.line("v")}) end)
+            vim.keymap.set("n", "<leader>hu", gs.undo_stage_hunk)
+            vim.keymap.set("n", "<leader>hR", gs.reset_buffer)
+            vim.keymap.set("n", "<leader>hp", gs.preview_hunk)
+            vim.keymap.set("n", "<leader>hb", function() gs.blame_line({full = true}) end)
+            vim.keymap.set("n", "<leader>hS", gs.stage_buffer)
+            vim.keymap.set("n", "<leader>hU", gs.reset_buffer_index)
+            vim.keymap.set("n", "<leader>hd", gs.diffthis)
+            vim.keymap.set("n", "<leader>hD", function() gs.diffthis("~") end)
+            vim.keymap.set("n", "<leader>gb", gs.toggle_current_line_blame)
+            vim.keymap.set("n", "<leader>gd", gs.toggle_deleted)
         end
     }
     use { "tpope/vim-fugitive" }

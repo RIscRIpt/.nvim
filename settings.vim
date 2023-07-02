@@ -67,19 +67,20 @@ vnoremap <C-c> <C-Insert>
 noremap <C-s> :up<CR>
 inoremap <C-s> <C-o>:up<CR>
 
-nnoremap + :cn<CR>
-nnoremap - :cp<CR>
-
 nnoremap <F7> :make<CR>
 
 noremap <A-s> <cmd>Telescope live_grep<CR>
 noremap <A-f> <cmd>Telescope oldfiles<CR>
-noremap <A-g> :let @/="\\<".expand("<cword>")."\\>"<CR><cmd>Telescope grep_string<CR>
+noremap <A-g> <cmd>Telescope grep_string<CR>
 noremap <A-n> <cmd>Telescope file_browser path=%:p:h<CR>
 noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
 noremap <A-t> <cmd>Telescope resume<CR>
 noremap <leader>gs <cmd>Telescope git_status<CR>
+noremap <Tab><Tab> <cmd>Telescope buffers<CR>
+
+nnoremap <silent> <leader><leader> :b#<CR>
+vnoremap <silent> <leader><leader> :b#<CR>
 
 noremap <silent> <A-=> <C-w>=
 noremap <silent> <A-j> <C-w>-
@@ -113,9 +114,6 @@ function! StripTrailingWhitespaces()
 endfunction
 nnoremap <leader>sw :call StripTrailingWhitespaces()<CR>
 vnoremap <leader>sw :call StripTrailingWhitespaces()<CR>
-
-nnoremap <silent> <leader><leader> :b#<CR>
-vnoremap <silent> <leader><leader> :b#<CR>
 
 vmap <S-Up>   <Plug>SchleppIndentUp
 vmap <S-Down> <Plug>SchleppIndentDown
