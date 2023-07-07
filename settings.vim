@@ -15,6 +15,8 @@ else
   let &undodir=expand($DATADIR . "/undo")
   let &viewdir=expand($DATADIR . "/view")
   set undofile
+
+  let g:gutentags_cache_dir=expand($DATADIR . "/tags")
 endif
 
 syntax on
@@ -140,3 +142,6 @@ nnoremap <silent> <leader>gl :GBrowse!<CR>
 vnoremap <silent> <leader>gl :GBrowse!<CR>
 
 let g:EditorConfig_exclude_patterns = ["fugitive://.*"]
+
+let g:gutentags_enabled = 0
+let g:gutentags_generate_on_write = 0
