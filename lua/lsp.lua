@@ -7,7 +7,7 @@ function format_range()
         return _G.format_op()
     end
     local old_op_fn = vim.go.operatorfunc
-    _G.format_op = function()
+    _G.format_op = function ()
         local start = vim.api.nvim_buf_get_mark(0, "[")
         local finish = vim.api.nvim_buf_get_mark(0, "]")
         if start[1] >= finish[1] and start[2] >= finish[2] then
@@ -25,45 +25,43 @@ function format_range()
     vim.api.nvim_feedkeys("g@", "n", false)
 end
 
-function lsp_on_attach(client, buffer)
-    local map_opts = {
-        noremap = true,
-        expr = true,
-        silent = true,
-        buffer = buffer,
-    }
-    vim.keymap.set("", "=", format_range, map_opts)
-    vim.keymap.set("n", "<A-i>", vim.lsp.buf.implementation, map_opts)
-    vim.keymap.set("n", "<A-d>", vim.lsp.buf.definition, map_opts)
-    vim.keymap.set("n", "<A-D>", vim.lsp.buf.declaration, map_opts)
-    vim.keymap.set("n", "<A-r>", vim.lsp.buf.references, map_opts)
-    vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
-end
-
-function lsp_setup_ccls(build_dir)
-    lsp.ccls.setup({
-        capabilities = cmp.default_capabilities(),
-        init_options = {
-            compilationDatabaseDirectory = build_dir or "build",
-            completion = {
-                filterAndSort = false,
+lsp_settings_map = {
+    default = function (params)
+        return {
+            capabilities = cmp.default_capabilities(),
+            on_attach = function (client, buffer)
+                local map_opts = {
+                    noremap = true,
+                    expr = true,
+                    silent = true,
+                    buffer = buffer,
+                }
+                vim.keymap.set("", "=", format_range, map_opts)
+                vim.keymap.set("n", "<A-i>", vim.lsp.buf.implementation, map_opts)
+                vim.keymap.set("n", "<A-d>", vim.lsp.buf.definition, map_opts)
+                vim.keymap.set("n", "<A-D>", vim.lsp.buf.declaration, map_opts)
+                vim.keymap.set("n", "<A-r>", vim.lsp.buf.references, map_opts)
+                vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
+            end,
+        }
+    end,
+    ccls = function (params)
+        return {
+            init_options = {
+                compilationDatabaseDirectory = params.build_dir or "build",
+                completion = {
+                    filterAndSort = false,
+                },
+                index = {
+                    multiVersion = 1,
+                },
             },
-            index = {
-                multiVersion = 1,
-            },
-        },
-        on_attach = lsp_on_attach,
-    })
-end
+            table.unpack(lsp_settings_map["default"](params))
+        }
+    end,
+}
 
-function lsp_setup_pyright()
-    lsp.pyright.setup({
-        on_attach = lsp_on_attach,
-    })
-end
-
-function lsp_setup_cmake()
-    lsp.cmake.setup({
-        on_attach = lsp_on_attach,
-    })
+function lsp_setup(server_name, params)
+    local settings_fn = lsp_settings_map[server_name] or lsp_settings_map["default"]
+    lsp[server_name].setup(settings_fn(params))
 end
