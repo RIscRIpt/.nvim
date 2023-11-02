@@ -65,6 +65,13 @@ require("packer").startup(function(use)
         end
     }
     use {
+        "molecule-man/telescope-menufacture",
+        requires = { { "nvim-telescope/telescope.nvim" } },
+        config = function()
+            require("telescope").load_extension("menufacture")
+        end
+    }
+    use {
         "lewis6991/gitsigns.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
         config = function()
