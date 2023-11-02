@@ -79,7 +79,7 @@ noremap <A-N> <cmd>Telescope file_browser<CR>
 noremap <A-b> <cmd>Telescope find_files<CR>
 noremap <A-t> <cmd>Telescope resume<CR>
 noremap <leader>gs <cmd>Telescope git_status<CR>
-noremap <Tab><Tab> <cmd>Telescope buffers<CR>
+noremap <leader>b <cmd>Telescope buffers<CR>
 
 nnoremap <silent> <leader><leader> :b#<CR>
 vnoremap <silent> <leader><leader> :b#<CR>
