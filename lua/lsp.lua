@@ -26,8 +26,8 @@ function format_range()
 end
 
 lsp_settings_map = {
-    default = function (params)
-        return {
+    default = function (settings)
+        return table.merge({
             capabilities = cmp.default_capabilities(),
             on_attach = function (client, buffer)
                 local map_opts = {
@@ -43,12 +43,11 @@ lsp_settings_map = {
                 vim.keymap.set("n", "<A-r>", vim.lsp.buf.references, map_opts)
                 vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
             end,
-        }
+        }, settings)
     end,
-    ccls = function (params)
-        return {
+    ccls = function (settings)
+        return table.merge({
             init_options = {
-                compilationDatabaseDirectory = params.build_dir or "build",
                 completion = {
                     filterAndSort = false,
                 },
@@ -56,12 +55,11 @@ lsp_settings_map = {
                     multiVersion = 1,
                 },
             },
-            table.unpack(lsp_settings_map["default"](params))
-        }
+        }, lsp_settings_map["default"](settings))
     end,
 }
 
-function lsp_setup(server_name, params)
+function lsp_setup(server_name, settings)
     local settings_fn = lsp_settings_map[server_name] or lsp_settings_map["default"]
-    lsp[server_name].setup(settings_fn(params))
+    lsp[server_name].setup(settings_fn(settings))
 end
