@@ -1,6 +1,8 @@
 local lsp = require("lspconfig")
 local cmp = require("cmp_nvim_lsp")
 
+vim.lsp.set_log_level("off")
+
 function format_range()
     if _G.format_op ~= nil then
         vim.api.nvim_feedkeys("\x1B", "n", false)
