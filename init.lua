@@ -70,6 +70,7 @@ require("packer").startup(function(use)
             require("telescope").load_extension("menufacture")
         end
     }
+    use { "ojroques/nvim-bufdel" }
     use {
         "lewis6991/gitsigns.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
