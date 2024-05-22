@@ -167,7 +167,6 @@ require("packer").startup(function(use)
             require("config-local").setup()
         end
     }
-    use { "chrisbra/NrrwRgn" }
     use { "zirrostig/vim-schlepp" }
     use { "bluz71/vim-moonfly-colors" }
     use { "catppuccin/nvim", as = "catppuccin" }
