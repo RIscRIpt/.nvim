@@ -39,11 +39,11 @@ lsp_settings_map = {
                     buffer = buffer,
                 }
                 vim.keymap.set("", "=", format_range, map_opts)
-                vim.keymap.set("n", "<A-i>", vim.lsp.buf.implementation, map_opts)
-                vim.keymap.set("n", "<A-d>", vim.lsp.buf.definition, map_opts)
-                vim.keymap.set("n", "<A-D>", vim.lsp.buf.declaration, map_opts)
-                vim.keymap.set("n", "<A-r>", vim.lsp.buf.references, map_opts)
-                vim.keymap.set("n", "<A-m>", vim.lsp.buf.hover, map_opts)
+                vim.keymap.set("n", "<localleader>i", vim.lsp.buf.implementation, map_opts)
+                vim.keymap.set("n", "<localleader>d", vim.lsp.buf.definition, map_opts)
+                vim.keymap.set("n", "<localleader>D", vim.lsp.buf.declaration, map_opts)
+                vim.keymap.set("n", "<localleader>r", vim.lsp.buf.references, map_opts)
+                vim.keymap.set("n", "<localleader>m", vim.lsp.buf.hover, map_opts)
             end,
         }, settings)
     end,
