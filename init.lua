@@ -52,6 +52,22 @@ require("packer").startup(function(use)
     use {
         "nvim-telescope/telescope.nvim",
         requires = { { "nvim-lua/plenary.nvim" } },
+        config = function()
+            require("telescope").setup({
+                defaults = {
+                    border = true,
+                    sorting_strategy = "ascending",
+                    layout_strategy = "horizontal",
+                    layout_config = {
+                        prompt_position = "top",
+                        horizontal = {
+                            width = { padding = 0 },
+                            height = { padding = 0 },
+                        },
+                    }
+                },
+            })
+        end
     }
     use {
         "nvim-telescope/telescope-file-browser.nvim",
