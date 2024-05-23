@@ -42,8 +42,8 @@ vim.opt.splitright = true
 vim.opt.spell = true
 vim.opt.spelllang = "en,ru,lv"
 vim.opt.grepprg = "rg"
-
-vim.o.showbreak = "↳"
+vim.opt.showbreak = "↳"
+vim.opt.winblend = 10
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
