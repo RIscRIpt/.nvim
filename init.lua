@@ -94,11 +94,11 @@ require("packer").startup(function(use)
             local gs = require("gitsigns")
             gs.setup({
                 signs = {
-                    add          = { hl = "GitSignsAdd",    text = nil, numhl = "GitSignsAddNr",    linehl = "GitSignsAddLn" },
-                    change       = { hl = "GitSignsChange", text = nil, numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
-                    delete       = { hl = "GitSignsDelete", text = nil, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-                    topdelete    = { hl = "GitSignsDelete", text = nil, numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
-                    changedelete = { hl = "GitSignsChange", text = nil, numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
+                    add          = { text = nil },
+                    change       = { text = nil },
+                    delete       = { text = nil },
+                    topdelete    = { text = nil },
+                    changedelete = { text = nil },
                 },
                 watch_gitdir = {
                     interval = 1000,
@@ -128,9 +128,6 @@ require("packer").startup(function(use)
                     virt_text = true,
                     virt_text_pos = "eol",
                     delay = 1000,
-                },
-                current_line_blame_formatter_opts = {
-                    relative_time = true,
                 },
             })
 
