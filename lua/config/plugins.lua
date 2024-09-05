@@ -204,7 +204,14 @@ require("lazy").setup({
       end
     },
     { "zirrostig/vim-schlepp" },
-    { "catppuccin/nvim", as = "catppuccin" },
+    {
+      "catppuccin/nvim",
+      name = "catppuccin",
+      config = function()
+        require("catppuccin").setup()
+        vim.cmd.colorscheme("catppuccin")
+      end
+    },
     {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'kyazdani42/nvim-web-devicons', opt = true },
