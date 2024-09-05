@@ -23,6 +23,7 @@ vim.opt.smartindent = true
 vim.opt.breakindent = true
 vim.opt.clipboard = "unnamedplus"
 vim.opt.wrap = false
+vim.opt.conceallevel = 1
 vim.opt.formatoptions = "tcro/qnjp"
 vim.opt.expandtab = true
 vim.opt.tabstop = 2
