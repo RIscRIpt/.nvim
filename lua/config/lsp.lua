@@ -1,6 +1,3 @@
-local lsp = require("lspconfig")
-local cmp = require("cmp_nvim_lsp")
-
 vim.lsp.set_log_level("off")
 
 function format_range()
@@ -30,7 +27,7 @@ end
 lsp_settings_map = {
     default = function (settings)
         return table.merge({
-            capabilities = cmp.default_capabilities(),
+            capabilities = require("cmp_nvim_lsp").default_capabilities(),
             on_attach = function (client, buffer)
                 local map_opts = {
                     noremap = true,
@@ -62,6 +59,7 @@ lsp_settings_map = {
 }
 
 function lsp_setup(server_name, settings)
+    local lsp = require("lspconfig")
     local settings_fn = lsp_settings_map[server_name] or lsp_settings_map["default"]
     lsp[server_name].setup(settings_fn(settings))
 end
