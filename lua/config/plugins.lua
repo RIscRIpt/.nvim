@@ -189,6 +189,30 @@ require("lazy").setup({
       "shumphrey/fugitive-gitlab.vim",
       dependencies = { "tpope/vim-fugitive" },
     },
+    { "akinsho/toggleterm.nvim", version = "*", config = true },
+    {
+      "stevearc/dressing.nvim",
+      opts = {},
+    },
+    { "rcarriga/nvim-notify" },
+    {
+      "stevearc/overseer.nvim",
+      opts = {},
+      dependencies = {
+        "stevearc/dressing.nvim",
+        "nvim-telescope/telescope.nvim",
+        "rcarriga/nvim-notify",
+      },
+    },
+    {
+      "Civitasv/cmake-tools.nvim",
+      opts = {},
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "akinsho/toggleterm.nvim",
+        "stevearc/overseer.nvim",
+      },
+    },
     { "mbbill/undotree" },
     { "tpope/vim-surround" },
     { "tpope/vim-repeat" },
