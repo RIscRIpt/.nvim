@@ -72,6 +72,8 @@ require("lazy").setup({
         vim.keymap.set("", "<leader>tt", telescope_builtin.resume)
         vim.keymap.set("", "<leader>bb", telescope_builtin.buffers)
         vim.keymap.set("", "<leader>gs", telescope_builtin.git_status)
+        vim.keymap.set("", "<leader>gb", telescope_builtin.git_branches)
+        vim.keymap.set("", "<leader>gj", telescope_builtin.git_files)
         vim.keymap.set("", "<leader>J", telescope_builtin.oldfiles)
         vim.keymap.set("", "<leader>j", telescope.extensions.menufacture.find_files)
         vim.keymap.set("", "<leader>N", telescope.extensions.file_browser.file_browser)
