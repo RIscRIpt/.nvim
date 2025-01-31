@@ -279,8 +279,12 @@ require("lazy").setup({
       opts = {
         workspaces = {
           {
-            name = "personal",
-            path = "~/projects/docs",
+            name = "Personal",
+            path = "~/projects/personal-docs",
+          },
+          {
+            name = "Zimperium",
+            path = "~/projects/zmpr-rdzenis-docs",
           },
         },
       },
