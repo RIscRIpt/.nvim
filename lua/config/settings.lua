@@ -48,6 +48,12 @@ vim.opt.winblend = 10
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+vim.api.nvim_create_user_command("Browse", function(args) vim.ui.open(args.args) end, {
+  desc = "Enables using GBrowse without netrw",
+  force = true,
+  nargs = 1,
+})
+
 if not vim.fn.has("macunix") then
   vim.keymap.set("i", "<c-v>", "<s-insert>")
   vim.keymap.set("v", "<c-c>", "<c-insert>")
@@ -127,10 +133,8 @@ vim.keymap.set("v", "<leader><Tab>", ":Tabularize /")
 
 vim.keymap.set("n", "<leader>gd", "<cmd>Gvdiffsplit<cr>", { silent = true })
 vim.keymap.set("n", "<leader>gm", "<cmd>G mergetool<cr>", { silent = true })
-vim.keymap.set("n", "<leader>gb", "<cmd>GBrowse<cr>", { silent = true })
-vim.keymap.set("v", "<leader>gb", "<cmd>GBrowse<cr>", { silent = true })
-vim.keymap.set("n", "<leader>gl", "<cmd>GBrowse!<cr>", { silent = true })
-vim.keymap.set("v", "<leader>gl", "<cmd>GBrowse!<cr>", { silent = true })
+vim.keymap.set("v", "<leader>gb", ":GBrowse<cr>", { silent = true })
+vim.keymap.set("v", "<leader>gl", ":GBrowse!<cr>", { silent = true })
 
 vim.g["EditorConfig_exclude_patterns"] = { "fugitive://.*" }
 
