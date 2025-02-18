@@ -288,5 +288,9 @@ require("lazy").setup({
         },
       },
     },
+    {
+      "whiteCryption.nvim",
+      dir = vim.fn.stdpath("config") .. "/pack/work/start/whiteCryption.nvim",
+    },
   },
 })
