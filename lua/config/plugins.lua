@@ -205,15 +205,6 @@ require("lazy").setup({
         "rcarriga/nvim-notify",
       },
     },
-    {
-      "Civitasv/cmake-tools.nvim",
-      opts = {},
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        "akinsho/toggleterm.nvim",
-        "stevearc/overseer.nvim",
-      },
-    },
     { "mbbill/undotree" },
     { "tpope/vim-surround" },
     { "tpope/vim-repeat" },
