@@ -47,6 +47,7 @@ require("lazy").setup({
         })
       end
     },
+    { "github/copilot.vim" },
     { "ludovicchabant/vim-gutentags" },
     {
       "nvim-telescope/telescope.nvim",
