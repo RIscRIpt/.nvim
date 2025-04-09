@@ -31,6 +31,7 @@ require("lazy").setup({
         local cmp = require("cmp")
         cmp.setup({
           sources = cmp.config.sources({
+            { name = "copilot" },
             { name = "nvim_lsp" },
             { name = "spell" },
             { name = "git" },
@@ -47,7 +48,13 @@ require("lazy").setup({
         })
       end
     },
-    { "github/copilot.vim" },
+    { "zbirenbaum/copilot.lua" },
+    {
+      "zbirenbaum/copilot-cmp",
+      config = function()
+        require("copilot_cmp").setup()
+      end
+    },
     { "ludovicchabant/vim-gutentags" },
     {
       "nvim-telescope/telescope.nvim",
@@ -252,13 +259,14 @@ require("lazy").setup({
             }},
             lualine_b = {},
             lualine_c = {},
-            lualine_x = {},
+            lualine_x = { 'copilot' ,'encoding', 'fileformat', 'filetype' },
             lualine_y = {},
             lualine_z = {"tabs"},
           },
         })
       end
     },
+    { 'AndreM222/copilot-lualine' },
     {
       "epwalsh/obsidian.nvim",
       version = "*",
