@@ -27,7 +27,9 @@ end
 lsp_settings_map = {
     default = function (settings)
         return table.merge({
-            capabilities = require("cmp_nvim_lsp").default_capabilities(),
+            capabilities = table.merge(require("cmp_nvim_lsp").default_capabilities(), {
+              positionEncodings = { "UTF-16" },
+            }),
             on_attach = function (client, buffer)
                 local map_opts = {
                     noremap = true,
