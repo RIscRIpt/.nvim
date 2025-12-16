@@ -61,7 +61,6 @@ lsp_settings_map = {
 }
 
 function lsp_setup(server_name, settings)
-    local lsp = require("lspconfig")
     local settings_fn = lsp_settings_map[server_name] or lsp_settings_map["default"]
-    lsp[server_name].setup(settings_fn(settings))
+    vim.lsp.config(server_name, settings_fn(settings))
 end
