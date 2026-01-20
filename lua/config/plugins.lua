@@ -262,6 +262,60 @@ require("lazy").setup({
           options = {
             theme = "catppuccin"
           },
+          sections = {
+            lualine_a = { "mode" },
+            lualine_b = { "branch", "diff", "diagnostics" },
+            lualine_c = {{
+                "filename",
+                file_status = true,
+                new_file_status = true,
+                path = 3,
+                shorting_target = 0,
+            }},
+            lualine_x = {
+              "lsp_status",
+              {
+                "encoding",
+                show_bomb = true,
+              },
+              "fileformat",
+              "filetype",
+            },
+            lualine_y = {
+              {
+                "searchcount",
+              },
+              "progress",
+            },
+            lualine_z = { "location" },
+          },
+          inactive_sections = {
+            lualine_a = { "mode" },
+            lualine_b = { "branch", "diff", "diagnostics" },
+            lualine_c = {{
+                "filename",
+                file_status = true,
+                new_file_status = true,
+                path = 3,
+                shorting_target = 0,
+            }},
+            lualine_x = {
+              "lsp_status",
+              {
+                "encoding",
+                show_bomb = true,
+              },
+              "fileformat",
+              "filetype",
+            },
+            lualine_y = {
+              {
+                "searchcount",
+              },
+              "progress",
+            },
+            lualine_z = { "location" },
+          },
           tabline = {
             lualine_a = {{
               "buffers",
@@ -269,9 +323,8 @@ require("lazy").setup({
             }},
             lualine_b = {},
             lualine_c = {},
-            lualine_x = { 'copilot' ,'encoding', 'fileformat', 'filetype' },
-            lualine_y = {},
-            lualine_z = {"tabs"},
+            lualine_y = { "copilot" },
+            lualine_z = { "tabs" },
           },
         })
       end
