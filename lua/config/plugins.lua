@@ -27,7 +27,7 @@ require("lazy").setup({
         { "f3fora/cmp-spell" },
         { "petertriho/cmp-git", dependencies = "nvim-lua/plenary.nvim" },
       },
-      config = function(cmp)
+      config = function()
         local cmp = require("cmp")
         cmp.setup({
           sources = cmp.config.sources({
@@ -38,12 +38,15 @@ require("lazy").setup({
             { name = "buffer" },
           }),
           mapping = {
-            ["<C-Space>"] = cmp.mapping.complete(),
+            ["<F1>"] = cmp.mapping.complete(),
             ["<CR>"] = cmp.mapping.confirm({ select = true }),
             ["<Tab>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Insert }),
             ["<Down>"] = cmp.mapping.select_next_item({ behavior = cmp.SelectBehavior.Select }),
             ["<S-Tab>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Insert }),
             ["<Up>"] = cmp.mapping.select_prev_item({ behavior = cmp.SelectBehavior.Select }),
+          },
+          experimental = {
+            ghost_text = true,
           },
         })
       end
