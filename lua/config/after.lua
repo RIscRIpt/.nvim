@@ -22,6 +22,8 @@ local function format_range()
   vim.api.nvim_feedkeys("g@", "n", false)
 end
 
+vim.lsp.set_log_level("off")
+
 vim.lsp.config("*", {
   capabilities = table.merge(require("cmp_nvim_lsp").default_capabilities(), {
     positionEncodings = { "UTF-16" },
