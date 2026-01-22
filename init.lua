@@ -1,4 +1,4 @@
 require("r.utils")
-require("config.settings")
+require("config.before")
 require("config.plugins")
-require("config.lsp_settings")
+require("config.after")
