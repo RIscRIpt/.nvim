@@ -25,7 +25,7 @@ end
 vim.lsp.set_log_level("off")
 
 vim.lsp.config("*", {
-  capabilities = table.merge(require("cmp_nvim_lsp").default_capabilities(), {
+  capabilities = vim.tbl_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
     positionEncodings = { "UTF-16" },
   }),
   on_attach = function (client, buffer)
