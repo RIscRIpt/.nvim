@@ -26,7 +26,7 @@ vim.lsp.set_log_level("off")
 
 vim.lsp.config("*", {
   capabilities = vim.tbl_extend("force", require("cmp_nvim_lsp").default_capabilities(), {
-    positionEncodings = { "UTF-16" },
+    positionEncodings = "UTF-16",
   }),
   on_attach = function (client, buffer)
     local map_opts = {
@@ -45,6 +45,7 @@ vim.lsp.config("*", {
 })
 
 vim.lsp.config("ccls", {
+  offset_encoding = "UTF-16",
   init_options = {
     compilationDatabaseDirectory = "build",
     completion = {
