@@ -1,0 +1,5 @@
+lsp_config = require("r.lsp_config")
+lsp_config.config("copilot")
+lsp_config.config("ccls")
+lsp_config.config("pyright")
+lsp_config.config("cmake")
