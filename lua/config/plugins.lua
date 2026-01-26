@@ -93,20 +93,9 @@ require("lazy").setup({
         vim.keymap.set("", "<leader>gj", telescope_builtin.git_files)
         vim.keymap.set("", "<leader>J", telescope_builtin.oldfiles)
         vim.keymap.set("", "<leader>j", telescope.extensions.menufacture.find_files)
-        vim.keymap.set("", "<leader>N", telescope.extensions.file_browser.file_browser)
-        vim.keymap.set("", "<leader>n", function () telescope.extensions.file_browser.file_browser({ path = "%:p:h"}) end)
+        vim.keymap.set("", "<leader>n", function () require("neo-tree.command").execute({ action = "focus", position = "right", reveal = true, reveal_force_cwd = false  }) end)
         vim.keymap.set("", "<leader>s", telescope.extensions.menufacture.live_grep)
         vim.keymap.set("v", "<leader>s", telescope.extensions.menufacture.grep_string)
-      end
-    },
-    {
-      "nvim-telescope/telescope-file-browser.nvim",
-      dependencies = {
-        "nvim-telescope/telescope.nvim",
-        "nvim-lua/plenary.nvim",
-      },
-      config = function()
-        require("telescope").load_extension("file_browser")
       end
     },
     {
@@ -114,6 +103,36 @@ require("lazy").setup({
       dependencies = { "nvim-telescope/telescope.nvim" },
       config = function()
         require("telescope").load_extension("menufacture")
+      end
+    },
+    {
+      "nvim-neo-tree/neo-tree.nvim",
+      branch = "v3.x",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "s1n7ax/nvim-window-picker",
+        "nvim-tree/nvim-web-devicons",
+      },
+      lazy = false,
+      config = function()
+        require("neo-tree").setup({
+          filesystem = {
+            filtered_items = {
+              hide_dotfiles = false,
+              hide_gitignored = false,
+              hide_ignored = false,
+              hide_hidden = false,
+              hide_by_name = {},
+              hide_by_pattern = {},
+              never_show = {},
+              never_show_by_pattern = {},
+            },
+          },
+          mappings = {
+            ["<space>"] = "toggle_node",
+          },
+        })
       end
     },
     {
@@ -325,6 +344,11 @@ require("lazy").setup({
             lualine_c = {},
             lualine_y = { "copilot" },
             lualine_z = { "tabs" },
+          },
+          extensions = {
+            "lazy",
+            "quickfix",
+            "neo-tree",
           },
         })
       end
